@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    .content#login_wrap
+        h1#logo
+        form.form_wrap.join_wrap(action='/join/register' method='post')
+            input#email(type='text' name='username' placeholder='username')
+            input#pwd(type='password' name='password' placeholder='password')
+            input#nickname(type='text' name='nickname' placeholder='nickname')
+            input#join_btn(type='submit' value='Sign up')
+
+
+
+
+

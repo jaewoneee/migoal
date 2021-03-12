@@ -1,0 +1,5 @@
+# : comments
+
+# ignore files about DB information
+public/lib/db.js
+config/mysql.json

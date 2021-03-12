@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    .content#login_wrap
+        h1#logo
+        form.form_wrap(action='/login/login_process' method='post')
+            input#email(type='text' name='username' placeholder='username')
+            input#pwd(type='password' name='password' placeholder='password')
+            input#login_btn(type='submit' value='Sign in')
+        a.to_join(href='/join') Don't have an account? Sign up.
+

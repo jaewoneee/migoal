@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  .bg_black
+  header
+    .header_inner 
+      h1#logo
+      .user_wrap.fr 
+        .profile 
+          span.profile-nickname Hello, #{nickname}
+        a(href="/login/logout")#logout_btn logout
+  .content#goal_wrap
+    .goal_wrap_inner
+      ul.list 
+        each goal in goals
+          li.list-item
+            p.goal-title= goal.title
+            div.end-text.fr end
+            div.goal-days.fr
+              .current-day
+              .left-day= goal.period
+              .start-day= goal.saved_at
+              .goal-id= goal.goal_id
+        li.empty-item1
+        li.empty-item2
+    #btn_wrap
+      button.goal-btn#add_btn.fr add     
+
+

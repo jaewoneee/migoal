@@ -1,0 +1,421 @@
+@charset "utf-8";
+
+/* CSS STYLE FILE */
+
+@media screen and (min-width: 360px) {
+  body {
+    background-color: lightgreen;
+  }
+
+  #logo {
+    width: 50%;
+    height: 100px;
+    background-color: yellow;
+  }
+
+
+  /* login.pug */
+  .content#login_wrap {
+    width: 96%;
+    margin: 0 auto;
+  }
+
+  .content#login_wrap #logo {
+    margin: 5vh auto;
+  }
+
+  .content#login_wrap .form_wrap {
+    width: 100%;
+  }
+
+  .content#login_wrap .form_wrap input {
+    width: 100%;
+    background-color: #fff;
+    border: 2px solid #000;
+    margin-bottom: 1.5vh;
+    padding: 4vw;
+  }
+
+  .content#login_wrap .form_wrap input[id*='btn'] {
+    margin-bottom: 0;
+    background-color: #000;
+    color: #fff;
+    font-weight: 500;
+  }
+
+  .content#login_wrap a.to_join {
+    width: 100%;
+    color: #000;
+    font-size: 0.9rem;
+    text-align: center;
+    margin: 4vh auto;
+    text-decoration: underline;
+  }
+
+
+  /* goals.pug */
+  header {
+    border-bottom: 2px solid #000;
+    margin-bottom: 2vh;
+  }
+
+  header .header_inner {
+    margin: 0 auto;
+    height: 80px;
+    line-height: 80px;
+  }
+
+  header #logo {
+    width: 25vw;
+    height: inherit;
+    margin-left: 2%;
+    display: inline-block;
+  }
+
+  header .user_wrap {
+    width: 56vw;
+    height: inherit;
+    font-size: 0.9rem;
+  }
+
+  header .user_wrap .profile {
+    width: 60%;
+    height: inherit;
+    text-align: center;
+    display: inline-block;
+  }
+
+  header .user_wrap #logout_btn {
+    width: 40%;
+    height: inherit;
+    text-align: center;
+    display: inline-block;
+    background-color: #000;
+    color: #fff;
+  }
+
+  .content#goal_wrap .list {
+    width: 96%;
+    margin: 0 auto;
+  }
+
+  .content#goal_wrap .list li[class*=empty-item] {
+    display: none;
+  }
+
+  .content#goal_wrap .list li[class*=-item] {
+    padding: 5vw;
+    border: 2px solid #000;
+    margin-bottom: 1vh;
+    box-sizing: border-box;
+  }
+
+  .content#goal_wrap .list li[class*=-item] .goal-title {
+    display: inline-block;
+    font-weight: 600;
+  }
+
+  .content#goal_wrap li .goal-days div {
+    display: inline-block;
+  }
+
+  .content#goal_wrap li .goal-days .current-day::after {
+    content: '/';
+    display: inline-block;
+    margin: 0 5px;
+  }
+
+  .content#goal_wrap li .goal-days .left-day::after {
+    content: 'days';
+    display: inline-block;
+  }
+
+  .content#goal_wrap #btn_wrap {
+    width: 80px;
+    position: fixed;
+    bottom: 3vh;
+    right: 2%;
+  }
+
+  .content#goal_wrap #btn_wrap #add_btn {
+    width: 80px;
+    height: 80px;
+    color: #fff;
+    background-color: #000;
+  }
+
+  /* goal_set_form */
+  .bg_black {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: rgba(36, 36, 36, 0.575);
+    display: none;
+    transition: ease;
+  }
+
+  .close_btn {
+    float: right
+  }
+
+  .goal_set_form {
+    padding: 10vw;
+    width: 60%;
+    background-color: #fff;
+    margin: 0 auto;
+    position: relative;
+    top: 21vh;
+  }
+
+  form[class*=_form] h2 {
+    width: 70%;
+    font-size: 1.1rem;
+    margin-bottom: 4vh;
+    display: inline-block;
+  }
+
+  form[class*=_form] input,
+  select {
+    padding: 4vw;
+    width: 100%;
+    border: 2px solid #000;
+    background-color: #fff;
+  }
+
+  .goal_set_form div {
+    margin-bottom: 3vh;
+  }
+
+  .goal_set_form div p {
+    margin-bottom: 1vh;
+    font-size: 0.9rem;
+  }
+
+  .goal_set_form #goal_btn {
+    background-color: #000;
+    color: #fff;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+
+  .goal_detail_form {
+    width: calc(100%);
+    height: 100%;
+    background-color: #fff;
+    padding: 10% 8%;
+    box-sizing: border-box;
+  }
+
+  .goal_detail_form h2 {
+    margin-bottom: 2vh;
+  }
+  .goal_detail_form .goal-days {
+    overflow: hidden;
+  }
+  .goal_detail_form .goal-days div{
+    float: left;
+  }
+
+  .goal_detail_form .goal-days div:first-child::after {
+    content: '/';
+  }
+
+  .goal_detail_form .goal-days div:last-child::after {
+    content: 'days';
+  }
+
+  .goal_detail_form .day-list {
+    width: 100%;
+    overflow: hidden;
+    border-left: 2px solid #000;
+    margin: 2vh 0 3vh 0;
+  }
+
+  .goal_detail_form .day-list li {
+    border: 2px solid #000;
+    border-left: none;
+    width: 20%;
+    height: 10vh;
+    float: left;
+    padding: 2%;
+    border-collapse: collapse;
+    box-sizing: border-box;
+  }
+
+  .goal_detail_form .day-list li:nth-child(n+6):nth-child(-n+30) {
+    border-top: none;
+  }
+
+  .goal_detail_form .day-list li p {
+    font-size: 0.8rem;
+  }
+
+  .goal_detail_form #delete_btn {
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  body {
+    background-color: rgb(223, 135, 164);
+  }
+}
+
+@media screen and (min-width: 750px) {
+  body {
+    background-color: paleturquoise;
+  }
+
+  /* login.pug */
+  .content#login_wrap {
+    width: 60%;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .content#login_wrap .form_wrap {
+    width: 100%;
+  }
+
+  .content#login_wrap .form_wrap input {
+    padding: 2.8vw;
+  }
+
+  /* goals.pug */
+  /* goal_set_form */
+
+  .goal_set_form {
+    width: 36%;
+    padding: 6.5vw;
+  }
+
+  form[class*=_form] input,
+  select {
+    padding: 3vw;
+  }
+}
+
+@media screen and (min-width: 980px) {
+  body {
+    background-color: rgb(255, 99, 27);
+  }
+
+  /* login.pug */
+  .content#login_wrap {
+    width: 40%;
+    margin: 0 auto;
+  }
+
+  .content#login_wrap .form_wrap input {
+    padding: 2.3vw;
+  }
+
+  /* goals.pug */
+  /* goal_set_form */
+  .goal_set_form input,
+  select {
+    padding: 2.5vw;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  body {
+    background-color: rgb(200, 178, 252);
+  }
+
+  /* login.pug */
+  .content#login_wrap {
+    width: 36%;
+    margin: 0 auto;
+  }
+
+  .content#login_wrap .form_wrap input {
+    padding: 2vw;
+  }
+
+
+  /* goals.pug */
+  .content#goal_wrap .list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+
+  .content#goal_wrap .list li[class*=-item] {
+    width: 32%;
+    padding: 3vw;
+  }
+
+  .content#goal_wrap .list li[class*=empty-item] {
+    display: block;
+    visibility: hidden;
+  }
+
+  .content#goal_wrap .list li[class*=-item] .goal-title {
+    display: block;
+    height: 50px;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  /* goal_set_form */
+  .goal_set_form {
+    width: 26%;
+    max-width: 450px;
+    padding: 5vw;
+    top: 20vh;
+  }
+
+  .goal_set_form h2 {
+    font-size: 1.2rem;
+  }
+
+  .goal_set_form input,
+  select {
+    padding: 2vw;
+  }
+}
+
+
+@media screen and (min-width: 1500px) {
+  body {
+    background-color: rgb(147, 250, 253);
+  }
+
+  /* login.pug */
+  .content#login_wrap {
+    width: 450px;
+    margin: 0 auto;
+  }
+
+  .content#login_wrap .form_wrap input {
+    padding: 2.6vh;
+
+  }
+
+
+  /* goals.pug */
+  .content#goal_wrap .list li[class*=-item] {
+    width: 24%;
+  }
+
+  /* goal_set_form */
+  .goal_set_form {
+    width: 20%;
+  }
+
+  form[class*=_form] input,
+  select {
+    padding: 1.4vw;
+  }
+}

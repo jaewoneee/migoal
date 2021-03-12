@@ -1,0 +1,37 @@
+@charset "utf-8";
+
+/* CSS COMMON FILE */
+
+#wrap {
+    width: 100%;
+}
+
+.inner {
+    width: 100%;
+}
+
+#logo {
+    background-image: url();
+    background-size: cover;
+    background-position: center;
+}
+
+input[id*='btn'],
+button {}
+
+.fl {
+    float: left
+}
+
+.fr {
+    float: right
+}
+
+.start-day,
+.goal-id {
+    display: none ! important;
+}
+
+.end-text {
+    display: none;
+}
