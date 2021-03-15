@@ -35,3 +35,41 @@ button {}
 .end-text {
     display: none;
 }
+
+input[type=checkbox] {
+    display: none;
+}
+
+label::before {
+    content: '';
+    background-image: url(../image/check.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+    border: 0 ! important;
+    transform: rotate(60);
+    width: 30px;
+    height: 30px;
+    -webkit-transition: transform 0.2s ease-out, color 0.2s ease;
+    -moz-transition: transform 0.2s ease-out, color 0.2s ease;
+    -ms-transition: transform 0.2s ease-out, color 0.2s ease;
+    -o-transition: transform 0.2s ease-out, color 0.2s ease;
+    transition: transform 0.2s ease-out, color 0.2s ease;
+    -webkit-transform: rotate(0);
+    -moz-transform: rotate(0);
+    -ms-transform: rotate(0);
+    -o-transform: rotate(0);
+    transform: rotate(0);
+}
+
+input[type=checkbox]:checked+label::before {
+    content: '';
+    background-image: url(../image//checked.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+}

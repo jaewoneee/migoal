@@ -44,6 +44,11 @@ router.get('/add_goal', function (req, res) {
   }
 })
 
+// 일별 목표 체크
+router.get('/check_goal', function (req, res) {
+
+})
+
 // 목표 삭제
 router.get('/delete_goal', function (req, res) {
   var deleteGoal = req.query.goal_id;

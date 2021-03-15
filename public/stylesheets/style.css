@@ -16,8 +16,10 @@
 
   /* login.pug */
   .content#login_wrap {
-    width: 96%;
+    width: 84%;
+    position: relative;
     margin: 0 auto;
+    top: 10vh;
   }
 
   .content#login_wrap #logo {
@@ -111,6 +113,7 @@
   }
 
   .content#goal_wrap .list li[class*=-item] .goal-title {
+    width: 70%;
     display: inline-block;
     font-weight: 600;
   }
@@ -210,10 +213,12 @@
   .goal_detail_form h2 {
     margin-bottom: 2vh;
   }
+
   .goal_detail_form .goal-days {
     overflow: hidden;
   }
-  .goal_detail_form .goal-days div{
+
+  .goal_detail_form .goal-days div {
     float: left;
   }
 
@@ -317,7 +322,7 @@
 
   /* goals.pug */
   /* goal_set_form */
-  .goal_set_form input,
+  form[class*=_form] input,
   select {
     padding: 2.5vw;
   }
@@ -380,7 +385,7 @@
     font-size: 1.2rem;
   }
 
-  .goal_set_form input,
+  form[class*=_form] input,
   select {
     padding: 2vw;
   }

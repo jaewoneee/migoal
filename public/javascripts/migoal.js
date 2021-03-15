@@ -41,10 +41,13 @@ for (var i = 0; i < $goalItem.length; i++) {
         function makeCalendar(goalPeriod) {
             var items = '<ul class="day-list">';
             for (var n = 1; n < goalPeriod + 1; n++) {
-                items = items + `<li class="item${n}"><p>day${n}</p></li>`;
+                items = items + `<li class="item${n}">
+                                    <p>day${n}</p>
+                                    <input type="checkbox" id="check${n}" class="check-goal" name="check-goal${n}">
+                                    <label for="check${n}" class="fr"></label>
+                                 </li>`;
             }
             items = items + '</ul>';
-            console.log(items);
             return items;
         };
         var calendarItem = makeCalendar(savedGoalPeriod);
@@ -54,9 +57,10 @@ for (var i = 0; i < $goalItem.length; i++) {
         $bg.style.display = "block";
         $bg.innerHTML = $modal_detail;
 
+
         // 목표일수 지났을 때는 'end' 표기
         if ($form[0].children[3].children[0].innerHTML === '') {
-            $form[0].children[3].innerHTML = 'end';
+            $form[0].children[3].innerHTML = 'end!';
         }
 
         console.log(savedGoalTitle, '+', savedGoalPeriod);
@@ -68,7 +72,5 @@ for (var i = 0; i < $goalItem.length; i++) {
             $bg.style.display = 'none';
             $bg.innerHTML = '';
         })
-
-
     })
 }
