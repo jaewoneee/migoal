@@ -1,7 +1,7 @@
 var express = require('express');
-var router = express.Router();
 var db = require('../public/lib/db');
 var shortid = require('shortid');
+var router = express.Router();
 
 
 /* GET home page. */
@@ -17,8 +17,8 @@ router.get('/', function (req, res) {
       goals: goals
     });
   })
-
 });
+
 
 // 목표 생성
 router.get('/add_goal', function (req, res) {
@@ -44,9 +44,37 @@ router.get('/add_goal', function (req, res) {
   }
 })
 
-// 일별 목표 체크
-router.get('/check_goal', function (req, res) {
+router.get('/:goalID', function(req, res){
 
+  console.log(req);
+})
+
+// 목표 일별 체크
+router.get('/check_goal', function (req, res) {
+  var chkedItem = req.query.chk.join();
+  var goalID = req.query.goal_id;
+  
+  /*DB에 저장될 일별 체크 여부 형식*/
+  var chkedDay = {
+    goal_id: goalID,
+    chk: chkedItem
+  }
+
+  db.query('SELECT chk FROM migoal_check WHERE goal_id = ?', [goalID], function (err, result) {
+    if (err) throw err;
+    if (!result[0]) {
+      db.query('INSERT INTO migoal_check SET ?', chkedDay, function (err, result) {
+        if (err) throw err;
+        res.redirect('/goal');
+      })
+    } else {
+      db.query('UPDATE migoal_check SET chk = ? WHERE goal_id = ?', [chkedItem, goalID], function (err, result) {
+        if (err) throw err;
+        console.log('업데이트 완료');
+        res.redirect('/goal');
+      })
+    }
+  })
 })
 
 // 목표 삭제

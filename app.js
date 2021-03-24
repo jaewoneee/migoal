@@ -4,8 +4,8 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
 var app = express();
+var helmet = require('helmet');
 var passport = require('./public/lib/passport')(app);
 var loginRouter = require('./routes/login')(passport);
 var joinRouter = require('./routes/join');
@@ -13,6 +13,10 @@ var goalRouter = require('./routes/goal')
 var session = require('express-session');
 var MySQLStore = require('express-mysql-session')(session);
 var dbInfo = require('./config/mysql.json');
+
+
+app.use(helmet());
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -46,7 +50,6 @@ app.use('/login', loginRouter);
 app.use('/join', joinRouter);
 // 메인 페이지
 app.use('/goal', goalRouter);
-
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
