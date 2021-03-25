@@ -15,6 +15,7 @@ block content
         each goal in goals
           li.list-item
             p.goal-title= goal.title
+            input(type="hidden" value=goal.chk)
             div.end-text.fr end
             div.goal-days.fr
               .current-day
@@ -26,5 +27,6 @@ block content
     #btn_wrap
       button#add_btn.fr add     
   script(src="../javascripts/migoal.js" type="module") 
-  script(src="../lib/period.js") 
+  script(src="../lib/period.js")
+
 

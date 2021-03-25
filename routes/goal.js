@@ -8,17 +8,13 @@ var router = express.Router();
 router.get('/', function (req, res) {
   // 사용자 지정
   var user = req.session.passport.user;
-  // 사용자의 목표 리스트 가져오기
-  db.query('SELECT * FROM migoal WHERE _id = ?', [user.id], function (err, goals) {
-    if (err) throw err;
 
-    res.render('goals', {
-      nickname: user.nickname,
-      goals: goals
-    });
+  // 사용자의 목표 리스트 가져오기
+  db.query('SELECT * FROM migoal LEFT OUTER JOIN migoal_check on goal_id =_goal_id  WHERE _id = ?', [user.id], function (err, goals) {
+    if (err) throw err;
+    res.render('goals', {goals: goals});
   })
 });
-
 
 // 목표 생성
 router.get('/add_goal', function (req, res) {
@@ -34,7 +30,6 @@ router.get('/add_goal', function (req, res) {
     saved_at: new Date(),
     goal_id: shortid.generate()
   }
-  console.log(req.session.passport.user);
 
   if (goalTitle && goalPeriod) {
     db.query('INSERT INTO migoal SET ?', newGoal, function (err, result) {
@@ -44,23 +39,18 @@ router.get('/add_goal', function (req, res) {
   }
 })
 
-router.get('/:goalID', function(req, res){
-
-  console.log(req);
-})
-
 // 목표 일별 체크
 router.get('/check_goal', function (req, res) {
   var chkedItem = req.query.chk.join();
   var goalID = req.query.goal_id;
-  
+
   /*DB에 저장될 일별 체크 여부 형식*/
   var chkedDay = {
-    goal_id: goalID,
+    _goal_id: goalID,
     chk: chkedItem
   }
-
-  db.query('SELECT chk FROM migoal_check WHERE goal_id = ?', [goalID], function (err, result) {
+  
+  db.query('SELECT chk FROM migoal_check WHERE _goal_id = ?', [goalID], function (err, result) {
     if (err) throw err;
     if (!result[0]) {
       db.query('INSERT INTO migoal_check SET ?', chkedDay, function (err, result) {
@@ -68,9 +58,8 @@ router.get('/check_goal', function (req, res) {
         res.redirect('/goal');
       })
     } else {
-      db.query('UPDATE migoal_check SET chk = ? WHERE goal_id = ?', [chkedItem, goalID], function (err, result) {
+      db.query('UPDATE migoal_check SET chk = ? WHERE _goal_id = ?', [chkedItem, goalID], function (err, result) {
         if (err) throw err;
-        console.log('업데이트 완료');
         res.redirect('/goal');
       })
     }

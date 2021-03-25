@@ -29,38 +29,54 @@ for (var i = 0; i < $goalItem.length; i++) {
         var currentDay = this.lastChild.children[0].innerText;
         var goalID = this.lastChild.lastChild.innerText;
 
+        // DB에 저장된 체크 내역이 없으면, 'N'상태로 배열 만들어 준다.
+        var chkDayArray = this.children[1].value.split(",");
+        if (chkDayArray == '') {
+            for (var a = 0; a < savedGoalPeriod; a++) {
+                chkDayArray.push('N');
+            }
+            chkDayArray.splice(0, 1);
+        }
 
-        var calendarItem = makeCalendar(savedGoalPeriod);
+        var calendarItem = makeCalendar(savedGoalPeriod, chkDayArray);
         var $modal_detail = template.detail(savedGoalTitle, currentDay, savedGoalPeriod, calendarItem, goalID);
         var $form = document.getElementsByClassName('goal_detail_form');
 
         openModal($modal_detail);
         closeModal();
 
-        // 일별 체크 유무 (체크되면 Y , 아니면 = N)
-        var chkItem = document.getElementsByClassName('check-goal');
+
+        // 클릭시, 체크 상태 구분 (체크되면 Y , 아니면 N)
+        var chkItem = document.getElementsByName('chk');
         for (var chk = 0; chk < chkItem.length; chk++) {
             chkItem[chk].addEventListener('click', function () {
-                console.log(this.previousElementSibling);
-                this.previousElementSibling.disabled = true;
+                if (this.value === 'N') {
+                    this.setAttribute('value', 'Y');
+                    this.previousElementSibling.disabled = true;
+                } else if (this.value === 'Y') {
+                    this.setAttribute('value', 'N');
+                    this.previousElementSibling.disabled = false;
+                }
             })
+        }
+
+        // 체크된 상태 표시
+        for (var chk = 0; chk < chkItem.length; chk++) {
+            if (chkItem[chk].value === 'Y') {
+                chkItem[chk].checked = true;
+            }
         }
 
         // 목표일수 지났을 때는 'end' 표기
         if ($form[0].children[3].children[0].innerHTML === '') {
             $form[0].children[3].innerHTML = 'end!';
         }
-
-        console.log(savedGoalTitle, '+', savedGoalPeriod);
-        console.log(this);
-
     })
-
-
-
 }
-var bg = document.querySelector('.bg_black');
+
 // 모달창 열기
+var bg = document.querySelector('.bg_black');
+
 function openModal(modal) {
     bg.style.display = 'block';
     bg.innerHTML = modal;
@@ -77,13 +93,13 @@ function closeModal() {
 }
 
 //모달창 내 달력 만들기
-function makeCalendar(goalPeriod) {
+function makeCalendar(goalPeriod, chkDayArray) {
     var items = '<ul class="day-list">';
-    for (var n = 1; n < goalPeriod + 1; n++) {
+    for (var n = 0; n < goalPeriod; n++) {
         items = items + `<li class="item${n}">
-                            <p>day${n}</p>
-                            <input type="hidden" class="check-goal-hidden" value="N" name="chk">
-                            <input type="checkbox" id="check${n}" class="check-goal" value="Y" name="chk">
+                            <p>day${n+1}</p>
+                            <input type="hidden" value="N" name="chk">
+                            <input type="checkbox" id="check${n}" class="check-goal" value="${chkDayArray[n]}" name="chk">
                             <label for="check${n}" class="fr"></label>
                          </li>`;
     }
