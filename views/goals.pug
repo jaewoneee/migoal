@@ -2,15 +2,12 @@ extends layout
 
 block content
   .bg_black
-  header
-    .header_inner 
-      h1#logo
-      .user_wrap.fr 
-        .profile 
-          span.profile-nickname Hello, #{nickname}
-        a(href="/login/logout")#logout_btn logout
   .content#goal_wrap
     .goal_wrap_inner
+      header
+        .header_inner 
+          h1#logo
+        a(href="/login/logout" aria-label="로그아웃 버튼")#logout_btn logout
       ul.list 
         each goal in goals
           li.list-item
@@ -25,7 +22,7 @@ block content
         li.empty-item1
         li.empty-item2
     #btn_wrap
-      button#add_btn.fr add     
+      button(aria-label="목표추가 버튼")#add_btn.fr add     
   script(src="../javascripts/migoal.js" type="module") 
   script(src="../lib/period.js")
 

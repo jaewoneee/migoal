@@ -6,6 +6,6 @@ block content
         form.form_wrap(action='/login/login_process' method='post')
             input#email(type='text' name='username' placeholder='username')
             input#pwd(type='password' name='password' placeholder='password')
-            input#login_btn(type='submit' value='Sign in')
-        a.to_join(href='/join') Don't have an account? Sign up.
+            input#login_btn(type='submit' value='Sign in' aria-label="로그인 버튼")
+        a.to_join(href='/join' aria-label="회원가입 페이지로 이동") Don't have an account? Sign up.
 

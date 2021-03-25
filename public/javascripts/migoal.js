@@ -1,7 +1,7 @@
 import template from "../lib/template.js"
 
 
-// 모달창 내 기간 설정 셀렉트 박스에 옵션값 넣기(7~30일)
+// 목표 추가 모달창 내 기간 설정 셀렉트 박스에 옵션값 넣기(7~30일)
 var period = (function () {
     var options = '<select name="goal_period" id="goal_period">';
     for (var i = 7; i < 31; i++) {
@@ -29,7 +29,7 @@ for (var i = 0; i < $goalItem.length; i++) {
         var currentDay = this.lastChild.children[0].innerText;
         var goalID = this.lastChild.lastChild.innerText;
 
-        // DB에 저장된 체크 내역이 없으면, 'N'상태로 배열 만들어 준다.
+        // DB에 저장된 체크내역이 없으면, 'N'상태로 초기 배열 만들어 준다.
         var chkDayArray = this.children[1].value.split(",");
         if (chkDayArray == '') {
             for (var a = 0; a < savedGoalPeriod; a++) {
@@ -63,6 +63,7 @@ for (var i = 0; i < $goalItem.length; i++) {
         // 체크된 상태 표시
         for (var chk = 0; chk < chkItem.length; chk++) {
             if (chkItem[chk].value === 'Y') {
+                chkItem[chk].previousElementSibling.disabled = true;
                 chkItem[chk].checked = true;
             }
         }
@@ -100,7 +101,7 @@ function makeCalendar(goalPeriod, chkDayArray) {
                             <p>day${n+1}</p>
                             <input type="hidden" value="N" name="chk">
                             <input type="checkbox" id="check${n}" class="check-goal" value="${chkDayArray[n]}" name="chk">
-                            <label for="check${n}" class="fr"></label>
+                            <label for="check${n}" class="fr check-goal-label"></label>
                          </li>`;
     }
     items = items + '</ul>';
