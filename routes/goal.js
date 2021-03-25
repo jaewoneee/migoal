@@ -12,7 +12,9 @@ router.get('/', function (req, res) {
   // 사용자의 목표 리스트 가져오기
   db.query('SELECT * FROM migoal LEFT OUTER JOIN migoal_check on goal_id =_goal_id  WHERE _id = ?', [user.id], function (err, goals) {
     if (err) throw err;
-    res.render('goals', {goals: goals});
+    res.render('goals', {
+      goals: goals
+    });
   })
 });
 
@@ -49,7 +51,7 @@ router.get('/check_goal', function (req, res) {
     _goal_id: goalID,
     chk: chkedItem
   }
-  
+
   db.query('SELECT chk FROM migoal_check WHERE _goal_id = ?', [goalID], function (err, result) {
     if (err) throw err;
     if (!result[0]) {
@@ -70,11 +72,11 @@ router.get('/check_goal', function (req, res) {
 router.get('/delete_goal', function (req, res) {
   var deleteGoal = req.query.goal_id;
   db.query('DELETE FROM migoal WHERE goal_id=?', [deleteGoal], function (err, result) {
-    if (err) throw err;
-    res.redirect('/goal');
+    db.query('DELETE FROM migoal_check WHERE _goal_id =?', [deleteGoal], function (err, result) {
+      if (err) throw err;
+      res.redirect('/goal');
+    })
   })
 })
-
-
 
 module.exports = router;
