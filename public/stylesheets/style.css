@@ -136,8 +136,7 @@
     margin: 0 auto;
     position: relative;
     top: 21vh;
-    -webkit-box-shadow: 0px 0px 22px 5px rgba(0, 0, 0, 0.27);
-    box-shadow: 0px 0px 22px 5px rgba(0, 0, 0, 0.27);
+
   }
 
   form[class*=_form] h2 {
@@ -230,8 +229,8 @@
 
   .goal_detail_form .day-list li .check-goal-label {
     position: absolute;
-    bottom: 3%;
-    right: 3%;
+    bottom: 6%;
+    right: 6%;
   }
 
   .goal_detail_form #delete_btn {
@@ -282,7 +281,6 @@
   }
 
   /* goal_set_form */
-
   .goal_set_form {
     width: 36%;
     padding: 6.5vw;
@@ -291,6 +289,16 @@
   form[class*=_form] input,
   select {
     padding: 3vw;
+  }
+
+  /* goal_detail_form */
+  .goal_detail_form {
+    width: 80%;
+    height: 90%;
+    position: relative;
+    top: 5vh;
+    margin: 0 auto;
+    overflow-y: scroll;
   }
 }
 
@@ -315,6 +323,14 @@
   select {
     padding: 2.5vw;
   }
+
+  /* goal_detail_form */
+  .goal_detail_form {
+    width: 70%;
+    padding: 8%;
+  }
+
+
 }
 
 @media screen and (min-width: 1100px) {
@@ -378,6 +394,13 @@
   select {
     padding: 2vw;
   }
+
+  /* goal_detail_form */
+  .goal_detail_form {
+    width: 55%;
+    padding: 6% 7%;
+  }
+
 }
 
 
@@ -411,6 +434,11 @@
   form[class*=_form] input,
   select {
     padding: 1.4vw;
+  }
+
+  .goal_detail_form {
+    width: 47%;
+    padding: 6%;
   }
 }
 
