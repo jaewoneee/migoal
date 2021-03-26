@@ -6,15 +6,10 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var app = express();
 var helmet = require('helmet');
-var passport = require('./public/lib/passport')(app);
-var loginRouter = require('./routes/login')(passport);
-var joinRouter = require('./routes/join');
-var goalRouter = require('./routes/goal')
 var session = require('express-session');
 var MySQLStore = require('express-mysql-session')(session);
 var dbInfo = require('./config/mysql.json');
-
-
+var passport = require('./public/lib/passport')(app);
 app.use(helmet());
 
 // view engine setup
@@ -34,6 +29,12 @@ app.use(session({
   })
 
 }))
+
+//라우터
+var loginRouter = require('./routes/login')(passport);
+var joinRouter = require('./routes/join');
+var goalRouter = require('./routes/goal')
+
 
 app.use(logger('dev'));
 app.use(express.json());

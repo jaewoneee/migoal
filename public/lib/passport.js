@@ -17,16 +17,13 @@ module.exports = function (app) {
         done(null, user);
     });
 
-    passport.deserializeUser(function (id, done) {
-        console.log('[DeserializeUser]', id);
-        db.query(
-            'SELECT * FROM users WHERE id=?',
-            [id],
-            function (err, results) {
+    passport.deserializeUser(function (user, done) {
+        console.log('[DeserializeUser]', user);
+        db.query( 'SELECT * FROM users WHERE id=?',[user.id], function (err, results) {
                 if (err) done(err);
                 if (!results[0]) done(err);
-                var user = results[0];
-                done(null, user);
+                var existedUser = results[0];
+                done(null, existedUser);
             });
     });
 
@@ -44,7 +41,6 @@ module.exports = function (app) {
                 } else {
                     bcrypt.compare(password, userInfo[0].pwd, (err, result) => {
                         const user = userInfo[0];
-                        console.log(userInfo);
                         if (err) return done(err);
                         if (!result) {
                             // 2. 비밀번호 틀린 경우

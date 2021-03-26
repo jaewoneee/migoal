@@ -1,5 +1,4 @@
 //로그인 페이지
-
 const express = require('express');
 const router = express.Router();
 
@@ -24,7 +23,8 @@ module.exports = function (passport) {
   // 로그아웃
   router.get('/logout', function (req, res) {
     req.logout();
-    req.session.save(function () {
+    req.session.destroy(function () {
+      console.log('야야야야',req.session);
       res.redirect('/login');
     })
   })

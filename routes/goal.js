@@ -6,16 +6,21 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function (req, res) {
-  // 사용자 지정
-  var user = req.session.passport.user;
+  if (!!req.session.passport) {
+    // 사용자 지정
+    var user = req.session.passport.user;
+    // 사용자의 목표 리스트 가져오기
+    db.query('SELECT * FROM migoal LEFT OUTER JOIN migoal_check on goal_id =_goal_id  WHERE _id = ?', [user.id], function (err, goals) {
+      if (err) throw err;
+      res.render('goals', {
+        goals: goals
+      });
+    })
+  } else {
+    //로그인 상태 아니면 로그인 화면으로 튕겨내기
+    res.redirect('/login');
+  }
 
-  // 사용자의 목표 리스트 가져오기
-  db.query('SELECT * FROM migoal LEFT OUTER JOIN migoal_check on goal_id =_goal_id  WHERE _id = ?', [user.id], function (err, goals) {
-    if (err) throw err;
-    res.render('goals', {
-      goals: goals
-    });
-  })
 });
 
 // 목표 생성
