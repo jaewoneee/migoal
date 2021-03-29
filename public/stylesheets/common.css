@@ -10,10 +10,11 @@
     width: 100%;
 }
 
-#logo {
-    background-image: url();
-    background-size: cover;
+h1#logo {
+    background-image: url(../image/logo.svg);
+    background-size: contain;
     background-position: center;
+    background-repeat: no-repeat;
     text-indent: -9999px;
 }
 
@@ -131,14 +132,21 @@ form[class*=_form] {
         -o-transform: rotate(360deg);
     }
 }
-#save_btn:hover{
+
+#save_btn:hover {
     color: #fff;
 }
+
 #login_btn:hover,
 #save_btn:hover,
 #goal_btn:hover,
-#delete_btn:hover{
+#delete_btn:hover {
     box-shadow: inset 0 -12vh 0 0 #29ff8f;
     transition: 0.25s;
     border-color: #29ff8f;
 }
+
+.content#goal_wrap .list li[class*=-item]:hover {
+    border-color: #29ff8f;
+    transition: 0.25s;
+  }
