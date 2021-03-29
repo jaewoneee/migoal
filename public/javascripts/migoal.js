@@ -67,16 +67,16 @@ for (var i = 0; i < $goalItem.length; i++) {
                 chkItem[chk].checked = true;
             }
         }
-
         // 목표일수 지났을 때는 'end' 표기
-        if ($form[0].children[3].children[0].innerHTML === '') {
-            $form[0].children[3].innerHTML = 'end!';
+        if ($form[0].children[2].children[0].innerHTML === '') {
+            $form[0].children[2].innerHTML = 'end!';
         }
     })
 }
 
 // 모달창 열기
 var bg = document.querySelector('.bg_black');
+
 function openModal(modal) {
     bg.style.display = 'block';
     bg.innerHTML = modal;

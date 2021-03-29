@@ -28,7 +28,7 @@
         // 목표일수 지났을 때는 'end'표기 / 아닐 때는 현재일수 넣기
         if ($deadline < result) {
             startDay[idx].parentNode.style.display = "none";
-            startDay[idx].parentNode.parentNode.children[1].style.display = "block";
+            startDay[idx].parentNode.parentNode.children[2].style.display = "block";
         } else {
             startDay[idx].parentNode.firstChild.innerHTML = result;
         }
