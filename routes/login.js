@@ -24,7 +24,6 @@ module.exports = function (passport) {
   router.get('/logout', function (req, res) {
     req.logout();
     req.session.destroy(function () {
-      console.log('야야야야',req.session);
       res.redirect('/login');
     })
   })

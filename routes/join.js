@@ -1,9 +1,9 @@
 //회원가입 페이지
-
 var express = require('express');
 var db = require('../public/lib/db');
 var bcrypt = require('bcrypt');
 var shortid = require('shortid');
+var sanitizeHTML = require('sanitize-html');
 var router = express.Router();
 
 /* GET home page. */
@@ -12,9 +12,9 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/register', function (req, res) {
-  var username = req.body.username;
-  var nickname = req.body.nickname;
-  var pwd = req.body.password;
+  var username = sanitizeHTML(req.body.username);
+  var nickname = sanitizeHTML(req.body.nickname);
+  var pwd = sanitizeHTML(req.body.password);
 
   // 입력된 비밀번호 암호화
   bcrypt.genSalt(10, function (err, salt) {

@@ -92,7 +92,7 @@
     display: inline-block;
   }
 
-  .content#goal_wrap li .goal-days .current-day::after {
+  .current-day::after {
     content: '/';
     display: inline-block;
     margin: 0 5px;
@@ -204,7 +204,7 @@
     width: 100%;
     overflow: hidden;
     border-left: 2px solid #000;
-    margin: 2vh 0 3vh 0;
+    margin: 3vh 0;
   }
 
   .goal_detail_form .day-list li {
@@ -437,13 +437,12 @@
   }
 
   .goal_detail_form {
-    width: 47%;
+    width: 42%;
     padding: 6%;
   }
 }
 
 @media screen and (min-height: 1360px) {
 
-  .goal_detail_form .day-list li {}
 
 }

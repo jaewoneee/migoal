@@ -7,7 +7,6 @@ module.exports = function (app) {
     var passport = require('passport'),
         LocalStrategy = require('passport-local').Strategy;
 
-
     /*passport를 사용하겠다는 선언*/
     app.use(passport.initialize());
     app.use(passport.session());

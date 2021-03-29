@@ -29,7 +29,7 @@ for (var i = 0; i < $goalItem.length; i++) {
         var currentDay = this.lastChild.children[0].innerText;
         var goalID = this.lastChild.lastChild.innerText;
 
-        // DB에 저장된 체크내역이 없으면, 'N'상태로 초기 배열 만들어 준다.
+        // 달력 아이템 : DB에 저장된 체크내역이 없으면, 'N'상태로 초기 배열 만들어 준다.
         var chkDayArray = this.children[1].value.split(",");
         if (chkDayArray == '') {
             for (var a = 0; a < savedGoalPeriod; a++) {
@@ -46,7 +46,7 @@ for (var i = 0; i < $goalItem.length; i++) {
         closeModal();
 
 
-        // 클릭시, 체크 상태 구분 (체크되면 Y , 아니면 N)
+        // 달력 아이템 : 클릭시, 체크 상태 구분 (체크되면 Y , 아니면 N)
         var chkItem = document.getElementsByName('chk');
         for (var chk = 0; chk < chkItem.length; chk++) {
             chkItem[chk].addEventListener('click', function () {
@@ -60,7 +60,7 @@ for (var i = 0; i < $goalItem.length; i++) {
             })
         }
 
-        // 체크된 상태 표시
+        // 달력 아이템 : 체크된 상태 표시
         for (var chk = 0; chk < chkItem.length; chk++) {
             if (chkItem[chk].value === 'Y') {
                 chkItem[chk].previousElementSibling.disabled = true;
@@ -77,7 +77,6 @@ for (var i = 0; i < $goalItem.length; i++) {
 
 // 모달창 열기
 var bg = document.querySelector('.bg_black');
-
 function openModal(modal) {
     bg.style.display = 'block';
     bg.innerHTML = modal;
