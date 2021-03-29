@@ -66,6 +66,7 @@ input{
 }
 input[type='submit'],button{
     cursor: pointer;
+    font-weight: 500;
 }
 
 table {

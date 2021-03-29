@@ -14,7 +14,8 @@ router.get('/', function (req, res) {
     db.query('SELECT * FROM migoal LEFT OUTER JOIN migoal_check on goal_id =_goal_id  WHERE _id = ?', [user.id], function (err, goals) {
       if (err) throw err;
       res.render('goals', {
-        goals: goals
+        goals: goals,
+        nickname:goals.nickname
       });
     })
   } else {

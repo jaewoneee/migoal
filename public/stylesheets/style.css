@@ -83,6 +83,13 @@
     cursor: pointer;
   }
 
+  .content#goal_wrap .list li[class*=-item]:hover {
+    background-color: #000;
+    color: #fff;
+  }
+
+
+
   .content#goal_wrap .list li[class*=-item] .goal-title {
     font-weight: 600;
     margin-bottom: 1.5vh
@@ -122,7 +129,6 @@
     color: #fff;
   }
 
-
   /* goal_set_form */
   .close_btn {
     width: 15px;
@@ -154,7 +160,7 @@
     background-color: #fff;
   }
 
-  .goal_set_form div {
+  .goal_set_form div[class*=goal_set] {
     margin-bottom: 3vh;
   }
 
@@ -420,7 +426,6 @@
 
   }
 
-
   /* goals.pug */
   .content#goal_wrap .list li[class*=-item] {
     width: 24%;
@@ -442,7 +447,12 @@
   }
 }
 
-@media screen and (min-height: 1360px) {
+@media screen and (min-width: 1800px) {
 
-
+  .goal_detail_form {
+    width: 40%;
+    padding: 5%;
+  }
 }
+
+@media screen and (min-height: 1360px) {}
