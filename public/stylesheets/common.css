@@ -109,7 +109,7 @@ form[class*=_form] {
 #logout_btn:hover,
 #add_btn:hover {
     position: relative;
-    animation: btnEffect 1.5s ease-out infinite;
+    animation: btnEffect 1.2s cubic-bezier(.31,.82,.8,1.02) infinite;
     animation-delay: 0.1s;
     background-color: #29ff8f;
     font-weight: 500;

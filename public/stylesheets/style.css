@@ -106,7 +106,7 @@
   .content#goal_wrap #btn_wrap {
     width: 80px;
     position: fixed;
-    bottom: 3vh;
+    bottom: 5vh;
     right: 3%;
   }
 
@@ -173,7 +173,7 @@
     width: calc(100%);
     height: 100%;
     background-color: #fff;
-    padding: 10% 8%;
+    padding: 10% 7%;
     box-sizing: border-box;
 
   }
@@ -209,7 +209,7 @@
   .goal_detail_form .day-list li {
     border: 2px solid #000;
     border-left: none;
-    width: 20%;
+    width: calc(100%/7);
     height: 10vh;
     float: left;
     padding: 2%;
@@ -218,7 +218,7 @@
     position: relative;
   }
 
-  .goal_detail_form .day-list li:nth-child(n+6):nth-child(-n+30) {
+  .goal_detail_form .day-list li:nth-child(n+8):nth-child(-n+30) {
     border-top: none;
   }
 
@@ -227,9 +227,11 @@
   }
 
   .goal_detail_form .day-list li .check-goal-label {
-    position: absolute;
-    bottom: 6%;
-    right: 6%;
+    width: 30px;
+    display: block;
+    position: relative;
+    bottom: -25%;
+    margin: 0 auto;
   }
 
   .goal_detail_form #delete_btn {
@@ -296,6 +298,11 @@
     margin: 0 auto;
     overflow-y: scroll;
   }
+
+  .goal_detail_form .day-list li .check-goal-label {
+    float: right;
+  }
+
 }
 
 @media screen and (min-width: 980px) {
@@ -396,6 +403,9 @@
     width: 55%;
     padding: 6% 7%;
   }
+  .goal_detail_form .day-list li .check-goal-label{
+    bottom: -35%;
+  }
 
 }
 
@@ -404,7 +414,7 @@
 
   /* login.pug */
   .content#login_wrap {
-    width: 450px;
+    width: 400px;
     margin: 0 auto;
   }
 
@@ -430,7 +440,7 @@
 
   .goal_detail_form {
     width: 42%;
-    padding: 6%;
+    padding: 5.5%;
   }
 }
 

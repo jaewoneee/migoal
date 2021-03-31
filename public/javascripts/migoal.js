@@ -100,7 +100,7 @@ function makeCalendar(goalPeriod, chkDayArray) {
                             <p>day${n+1}</p>
                             <input type="hidden" value="N" name="chk">
                             <input type="checkbox" id="check${n}" class="check-goal" value="${chkDayArray[n]}" name="chk">
-                            <label for="check${n}" class="fr check-goal-label"></label>
+                            <label for="check${n}" class="check-goal-label"></label>
                          </li>`;
     }
     items = items + '</ul>';
