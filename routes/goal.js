@@ -11,8 +11,9 @@ router.get('/', (req, res) => {
     const user = req.session.passport.user; // 사용자 지정
 
     // 사용자의 목표 리스트 가져오기
-    db.query('SELECT * FROM migoal LEFT OUTER JOIN migoal_check on goal_id =_goal_id  WHERE _id = ?', [user.id], (err, goals) => {
+    db.query('SELECT * FROM migoal LEFT OUTER JOIN migoal_check on goal_id =_goal_id  WHERE _id = ? ORDER BY saved_at', [user.id], (err, goals) => {
       if (err) throw err;
+      console.log(goals);
       res.render('goals', {
         goals: goals,
         nickname: goals.nickname
