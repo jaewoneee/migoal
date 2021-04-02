@@ -5,7 +5,7 @@ const router = express.Router();
 module.exports = function (passport) {
 
   /* GET home page. */
-  router.get('/', function (req, res, next) {
+  router.get('/', (req, res, next) => {
     res.render('login');
   });
 
@@ -15,17 +15,20 @@ module.exports = function (passport) {
       'local', {
         successRedirect: '/goal',
         failureRedirect: '/login',
-        failureFlash: false
+        failureFlash: true
       }
-    )
-  );
+    ),
+    passport.authenticate('local', {
+      failureFlash: 'Invalid username or password.'
+    }));
 
   // 로그아웃
-  router.get('/logout', function (req, res) {
+  router.get('/logout', (req, res) => {
     req.logout();
-    req.session.destroy(function () {
+    req.session.destroy(() => {
       res.redirect('/login');
     })
   })
+
   return router;
 }

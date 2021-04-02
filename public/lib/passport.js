@@ -11,19 +11,19 @@ module.exports = function (app) {
     app.use(passport.initialize());
     app.use(passport.session());
 
-    passport.serializeUser(function (user, done) {
+    passport.serializeUser((user, done) => {
         console.log('serializeUser', user);
         done(null, user);
     });
 
-    passport.deserializeUser(function (user, done) {
+    passport.deserializeUser((user, done) => {
         console.log('[DeserializeUser]', user);
-        db.query( 'SELECT * FROM users WHERE id=?',[user.id], function (err, results) {
-                if (err) done(err);
-                if (!results[0]) done(err);
-                var existedUser = results[0];
-                done(null, existedUser);
-            });
+        db.query('SELECT * FROM users WHERE id=?', [user.id], (err, results) => {
+            if (err) done(err);
+            if (!results[0]) done(err);
+            const existedUser = results[0];
+            done(null, existedUser);
+        });
     });
 
     passport.use(new LocalStrategy({
@@ -31,7 +31,7 @@ module.exports = function (app) {
         },
         (username, password, done) => {
             console.log('LocalStrategy', username, password);
-            db.query('SELECT * FROM users WHERE username = ?', [username], function (err, userInfo) {
+            db.query('SELECT * FROM users WHERE username = ?', [username], (err, userInfo) => {
                 if (err) return done(err);
                 // 1. 아이디가 존재하지 않는 경우
                 if (!userInfo[0]) {

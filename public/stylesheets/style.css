@@ -435,12 +435,12 @@
 
   form[class*=_form] input,
   select {
-    padding: 1.4vw;
+    padding: 1vw;
   }
 
   .goal_detail_form {
     width: 42%;
-    padding: 5.5%;
+    padding: 5.5%;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
   }
 }
 
