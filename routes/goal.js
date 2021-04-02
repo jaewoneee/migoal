@@ -13,7 +13,6 @@ router.get('/', (req, res) => {
     // 사용자의 목표 리스트 가져오기
     db.query('SELECT * FROM migoal LEFT OUTER JOIN migoal_check on goal_id =_goal_id  WHERE _id = ? ORDER BY saved_at', [user.id], (err, goals) => {
       if (err) throw err;
-      console.log(goals);
       res.render('goals', {
         goals: goals,
         nickname: goals.nickname
@@ -37,7 +36,7 @@ router.get('/add_goal', (req, res) => {
     _id: userID,
     title: goalTitle,
     period: goalPeriod,
-    saved_at: new Date(),
+    saved_at: new Date,
     goal_id: shortid.generate()
   }
 
