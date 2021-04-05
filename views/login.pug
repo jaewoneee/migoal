@@ -3,9 +3,11 @@ extends layout
 block content
     .content#login_wrap
         h1#logo 마이골 로고
-        form.form_wrap(action='/login/login_process' method='post')
+        form.form_wrap(action='/login/login_process' name='form' method='post')
             input#email(type='text' name='username' placeholder='username')
             input#pwd(type='password' name='password' placeholder='password')
-            input#login_btn(type='submit' value='Sign in' aria-label="로그인 버튼")
+            input#login_btn(type='button' value='Sign in' aria-label="로그인 버튼")
         a.to_join(href='/join' aria-label="회원가입 페이지로 이동") Don't have an account? Sign up.
+
+    script(src="../javascripts/sign.js" type="module") 
 

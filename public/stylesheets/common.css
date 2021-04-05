@@ -109,7 +109,7 @@ form[class*=_form] {
 #logout_btn:hover,
 #add_btn:hover {
     position: relative;
-    animation: btnEffect 1.2s cubic-bezier(.31,.82,.8,1.02) infinite;
+    animation: btnEffect 1.2s cubic-bezier(.31, .82, .8, 1.02) infinite;
     animation-delay: 0.1s;
     background-color: #29ff8f;
     font-weight: 500;
@@ -138,6 +138,7 @@ form[class*=_form] {
 }
 
 #login_btn:hover,
+#join_btn:hover,
 #save_btn:hover,
 #goal_btn:hover,
 #delete_btn:hover {
@@ -149,4 +150,4 @@ form[class*=_form] {
 .content#goal_wrap .list li[class*=-item]:hover {
     border-color: #29ff8f;
     transition: 0.25s;
-  }
+}
